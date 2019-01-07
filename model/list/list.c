@@ -156,12 +156,14 @@ int isEmpty(List l) {
 }
 
 void destroy(List * l) {
+    int j;
+    for (j = 0; j < MAX_SORTING;j++) {
+        goStart(l, j);
 
-	goStart(l, 0);
-
-	while (!isEmpty(*l)) {
-		removePoi(l, 0);
-	}
+        while (!isEmpty(*l)) {
+            removePoi(l, j);
+        }
+    }
     free(l->first);
     free(l->last);
 

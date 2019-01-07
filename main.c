@@ -21,7 +21,7 @@ int main() {
 
 	readWholeFile(f, &l);
 
-
+	fclose(f);
 	printWelcomeLine();
 
 	do {

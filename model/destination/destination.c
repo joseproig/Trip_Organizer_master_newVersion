@@ -190,13 +190,13 @@ char * readString(FILE * file) {
 		i++[ret] = tmp;
 
 		if (i >= size) {
+			resize(&ret, size, size*2);
 			size *= 2;
-			resize(&ret, size);
 		}
 		fscanf(file, "%c", &tmp);
 	} while(tmp != '\n');
 
-	resize(&ret, i + 1);
+	resize(&ret, size,i);
 
 
 	return ret;

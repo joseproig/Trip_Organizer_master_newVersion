@@ -49,13 +49,13 @@ char * readUserString() {
 		i++[ret] = tmp;
 
 		if (i >= size) {
-			size *= 2;
-			resize(&ret, size);
+            resize(&ret, size, size * 2);
+            size *=2;
 		}
 		scanf("%c", &tmp);
 	} while (tmp != '\n');
 
-	resize(&ret, i + 1);
+    resize(&ret,size,i);
 
 	return ret;
 }

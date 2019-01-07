@@ -196,7 +196,8 @@ char * readString(FILE * file) {
 		fscanf(file, "%c", &tmp);
 	} while(tmp != '\n');
 
-	resize(&ret, size,i);
+	resize(&ret, size,i + 1);
+	ret[i] = '\0';
 
 
 	return ret;

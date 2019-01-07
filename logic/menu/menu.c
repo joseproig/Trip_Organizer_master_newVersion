@@ -46,16 +46,18 @@ char * readUserString() {
 
 	scanf("%c", &tmp);
 	do {
-		i++[ret] = tmp;
+		ret[i] = tmp;
 
-		if (i >= size) {
+		if (i >= (size-1)) {
             resize(&ret, size, size * 2);
             size *=2;
 		}
 		scanf("%c", &tmp);
+		i++;
 	} while (tmp != '\n');
 
-    resize(&ret,size,i);
+	resize(&ret,size,i+1);
+	ret [i] = '\0';
 
 	return ret;
 }
@@ -92,6 +94,8 @@ void printDestination(Destination d, int pos, int option) {
 			break;
 		case BY_AVG_PRICE:
 			printf("\tAvg Price:\t%lf\n", getAverageHotelPrice(d));
+			break;
+		default:
 			break;
 	}
 }

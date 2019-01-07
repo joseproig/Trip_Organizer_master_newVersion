@@ -91,6 +91,7 @@ Destination readPoi(List l, int mode) {
 }
 
 void removePoi(List * l, int mode) {
+	int auxiliar;
 	// Comprovem que no estigui buida ni estiguem a un fantasma
 	if (!isEmpty(*l) && l -> poi[mode] != l -> last && l -> poi[mode] != l -> first) {
 		//Desem la posicio del node en memòria a un punter auxiliar, per no perdre'l
@@ -99,13 +100,28 @@ void removePoi(List * l, int mode) {
 		int i;
 		//Deslliguem el node de la resta
         for (i = 0; i < MAX_SORTING; i++) {
-            l -> poi[i] = aux -> next[i];
-            aux -> prev[i] -> next[i] = aux -> next[i];
-            aux -> next[i] -> prev[i] = aux -> prev[i];
+			auxiliar = busqueda (*l,i,l->poi[mode]);
+			l -> poi[auxiliar] = aux -> next[auxiliar];
+			aux -> prev[auxiliar] -> next[auxiliar] = aux -> next[auxiliar];
+			aux -> next[auxiliar] -> prev[auxiliar] = aux -> prev[auxiliar];
         }
         free(aux);
 		l -> n--;
 	}
+}
+
+int busqueda (List l, int mode,Node * n) {
+	int trobat=0;
+	int w = 0;
+	goStart(&l,mode);
+	while (!isEnd(l,mode) && !trobat) {
+		if (l.poi[w] == n) {
+			trobat = 1;
+		}
+		w++;
+	}
+	w = w - 1;
+	return (w);
 }
 
 void goStart(List * l, int mode) {

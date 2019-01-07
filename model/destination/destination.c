@@ -168,7 +168,12 @@ void freeAll(Destination dest) {
 	free(dest.name);
 	free(dest.country);
 	free(dest.hotelPrices);
-	free(dest.travelAltitude);
+    int i = 0;
+    while (i < dest.n) {
+        free(dest.travelAltitude[i]);
+        i++;
+    }
+    free(dest.travelAltitude);
 }
 
 char * readString(FILE * file) {

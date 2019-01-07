@@ -27,7 +27,7 @@ int comparePrices(const void * a, const void * b) {
 	double aValue = *((double *) a);
 	double bValue = *((double *) b);
 
-	return round(bValue + aValue);
+	return round(aValue - bValue);
 }
 
 void planTrip(List *l){
@@ -62,7 +62,7 @@ void planTrip(List *l){
 
         	printAverage(getAverageHotelPrice(d));
 
-        	qsort(d.hotelPrices, d.nHotels, sizeof(double), comparePrices);
+            qsort(d.hotelPrices, d.nHotels, sizeof(double),&comparePrices);
 
             printTop3(d.hotelPrices);
 

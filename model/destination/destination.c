@@ -138,7 +138,8 @@ void mapAltitude(double ** travelAltitude, char ** map, int i, int j, int n) {
 			min = k;
 		}
 	}
-	
+    i = newI;
+    j = newJ;
 
 	advanceInDirection(&newI, &newJ, min);
 
